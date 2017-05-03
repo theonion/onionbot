@@ -1,0 +1,6 @@
+{
+  "name": "onionbot",
+  "description": "America's Finest Slack Integration",
+  "repository": "https://github.com/theonion/onionbot2.0",
+  "keywords": ["node", "botkit", "slack", "onion"]
+}

@@ -13,9 +13,9 @@ function getNewsAndSend(message, bot) {
 
   const type = 'core_article';
   const query = text.replace(' ', '+');
-  const queryUrl = `${config.SEARCH_ENDPOINT}?q=${query}&type=${type}`;
+  const queryUrl = `${config.searchEndpoint}?q=${query}&type=${type}`;
 
-  const uniqueVisitor = ua(config.GOOGLE_ANALYTICS_ID, user);
+  const uniqueVisitor = ua(config.googleAnalyticsId, user);
   const analyticsParams = {
     ec: `Channel: ${channel}`,
     ea: `Query: ${text}`,

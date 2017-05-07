@@ -15,11 +15,11 @@ function formatDesc(string) {
 
 function generatePayload(article = null) {
   const {
-    BASE_URL,
-    DEFAULT_ARTICLE,
-    FAVICON_URL,
-    ICON_URL,
-    UTM_PARAMS,
+    baseUrl,
+    defaultArticle,
+    faviconUrl,
+    iconUrl,
+    utmParams,
   } = config;
 
   const {
@@ -28,7 +28,7 @@ function generatePayload(article = null) {
     published,
     title,
     url,
-  } = (article || DEFAULT_ARTICLE);
+  } = (article || defaultArticle);
 
   return {
     attachments: [
@@ -36,14 +36,14 @@ function generatePayload(article = null) {
         color: article ? '#006B3A' : '#A7A7A7',
         image_url: image,
         footer: 'The Onion',
-        footer_icon: FAVICON_URL,
+        footer_icon: faviconUrl,
         text: formatDesc(description),
         title,
-        title_link: `${BASE_URL}${url}?${querystring.stringify(UTM_PARAMS)}`,
+        title_link: `${baseUrl}${url}?${querystring.stringify(utmParams)}`,
         ts: published,
       },
     ],
-    icon_url: ICON_URL,
+    icon_url: iconUrl,
     username: 'The Onion Bot',
   };
 }

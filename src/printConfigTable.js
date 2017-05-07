@@ -3,7 +3,7 @@ const Table = require('cli-table');
 
 function printConfigTable() {
   const configTable = new Table({
-    head: ['CONFIG_VAR', 'value'],
+    head: ['CONFIG_VAR', 'Value'],
     colWidhs: [100, 200],
   });
 

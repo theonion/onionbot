@@ -5,12 +5,12 @@ function stripTags(string) {
   return string.replace(/<(?:.|\n)*?>/gm, '');
 }
 
-function replaceDash(string) {
-  return string.replace('&mdash;', ' - ');
+function symbolize(string) {
+  return string.replace('&mdash;', ' - ').replace('&rsquo;', "'");
 }
 
 function formatDesc(string) {
-  return replaceDash(stripTags(string));
+  return symbolize(stripTags(string));
 }
 
 function generatePayload(article = null) {

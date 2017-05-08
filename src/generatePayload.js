@@ -6,7 +6,7 @@ function stripTags(string) {
 }
 
 function symbolize(string) {
-  return string.replace('&mdash;', ' - ').replace('&rsquo;', "'");
+  return string.replace(/&mdash;/g, ' - ').replace(/&rsquo;/g, "'");
 }
 
 function formatDesc(string) {

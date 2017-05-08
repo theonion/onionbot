@@ -22,7 +22,7 @@ const controller = Botkit.slackbot({
 }).configureSlackApp({
   clientId,
   clientSecret,
-  scopes: ['bot'],
+  scopes: ['bot', 'chat:write:bot'],
 });
 
 controller.setupWebserver(port, (err, webserver) => {

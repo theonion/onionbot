@@ -13,12 +13,15 @@ const {
   apiToken,
 } = config;
 
+const _activeBots = {};
+
 if (debugEnabled) {
   printConfigTable();
 }
 
 const controller = Botkit.slackbot({
   debug: debugEnabled,
+  json_file_store: './db/',
 }).configureSlackApp({
   clientId,
   clientSecret,
@@ -38,7 +41,17 @@ controller.setupWebserver(port, (err, webserver) => {
     }
   });
 
-  controller.spawn({ token: apiToken }).startRTM();
+  controller.storage.teams.all((loadErr, teams) => {
+    teams.forEach((team) => {
+      controller.spawn(team.bot).startRTM((teamErr, bot) => {
+        if (err) {
+          console.log('Error connecting bot to Slack:', teamErr);
+        } else {
+          _activeBots[bot.config.token] = bot;
+        }
+      });
+    });
+  });
 
   controller.hears([''], 'direct_message,direct_mention,mention', (bot, message) => {
     const { text } = message;

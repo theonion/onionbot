@@ -1,16 +1,20 @@
 const config = require('./config');
 const querystring = require('querystring');
 
-function stripTags(string) {
-  return string.replace(/<(?:.|\n)*?>/gm, '');
+function stripTags(s) {
+  return s.replace(/<(?:.|\n)*?>/gm, '');
 }
 
-function symbolize(string) {
-  return string.replace(/&mdash;/g, ' - ').replace(/&rsquo;/g, "'");
+function symbolize(s) {
+  return s.replace(/&mdash;/g, ' - ')
+    .replace(/&rsquo;/g, "’")
+    .replace(/&lsquo;/g, "‘")
+    .replace(/&rdquo;/g, "”")
+    .replace(/&ldquo;/g, "“");
 }
 
-function formatDesc(string) {
-  return symbolize(stripTags(string));
+function formatDesc(s) {
+  return symbolize(stripTags(s));
 }
 
 function generatePayload(article = null) {

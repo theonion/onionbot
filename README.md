@@ -2,7 +2,7 @@
 
 America's Finest Slack Integration.
 
-<a href="https://slack.com/oauth/authorize?&client_id=135069340643.137656326144&scope=bot,chat:write:bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack@2x.png"/></a>
+<a href="https://slack.com/oauth/authorize?&client_id=135069340643.137656326144&scope=bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack@2x.png"/></a>
 
 ## Usage
 

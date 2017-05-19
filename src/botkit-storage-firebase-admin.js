@@ -26,9 +26,9 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database();
 const rootRef = database.ref();
+const channelsRef = rootRef.child('channels');
 const teamsRef = rootRef.child('teams');
 const usersRef = rootRef.child('users');
-const channelsRef = rootRef.child('channels');
 
 module.exports = {
   teams: {

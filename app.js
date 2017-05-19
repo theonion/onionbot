@@ -1,3 +1,5 @@
+/* eslint no-console: ["warn", { allow: ["error", "info"] }] */
+
 const Botkit = require('botkit');
 const config = require('./src/config');
 const firebase = require('./src/botkit-storage-firebase-admin');
@@ -49,13 +51,13 @@ controller.storage.teams.all((teams) => {
     const parsedTeam = team.val();
     const { name } = parsedTeam;
 
-    if (debugEnabled) { console.log(`Adding team: ${name}`); }
+    if (debugEnabled) { console.info(`Adding team: ${name}`); }
 
     controller.spawn(parsedTeam.bot).startRTM((teamErr, bot) => {
       if (teamErr) {
-        console.log(`Error connecting bot to Slack for team ${name}: ${teamErr}`);
+        console.error(`Error connecting bot to Slack for team ${name}: ${teamErr}`);
       } else if (activeBots[bot.config.token]) {
-        console.log(`Error: bot already active for team ${name}`);
+        console.error(`Error: bot already active for team ${name}`);
       } else {
         activeBots[bot.config.token] = bot;
       }

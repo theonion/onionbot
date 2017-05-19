@@ -1,3 +1,5 @@
+/* eslint no-console: ["error", { allow: ["log"] }] */
+
 const config = require('./config');
 const Table = require('cli-table');
 

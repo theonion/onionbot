@@ -1,7 +1,8 @@
-const config = require('./config');
-const generatePayload = require('./generatePayload');
 const request = require('request');
 const ua = require('universal-analytics');
+
+const config = require('./config');
+const generatePayload = require('./generatePayload');
 
 function getNewsAndSend(message, bot) {
   const {
@@ -16,6 +17,7 @@ function getNewsAndSend(message, bot) {
   const queryUrl = `${config.searchEndpoint}?q=${query}&type=${type}`;
 
   const uniqueVisitor = ua(config.googleAnalyticsId, user);
+
   const analyticsParams = {
     ec: `Channel: ${channel}`,
     ea: `Query: ${text}`,
@@ -26,12 +28,15 @@ function getNewsAndSend(message, bot) {
 
   request(queryUrl, (err, response, result) => {
     let emojiName = 'fire';
-    let article;
+    let articles;
 
     if (response.statusCode !== 500) {
-      article = JSON.parse(result);
+      articles = JSON.parse(result).results;
       emojiName = 'wave';
     }
+
+    const randomIndex = Math.floor(Math.random() * articles.length);
+    const article = articles[randomIndex];
 
     const payload = generatePayload(article);
 

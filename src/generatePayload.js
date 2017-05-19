@@ -7,10 +7,10 @@ function stripTags(s) {
 
 function symbolize(s) {
   return s.replace(/&mdash;/g, ' - ')
-    .replace(/&rsquo;/g, "’")
-    .replace(/&lsquo;/g, "‘")
-    .replace(/&rdquo;/g, "”")
-    .replace(/&ldquo;/g, "“");
+    .replace(/&rsquo;/g, '’')
+    .replace(/&lsquo;/g, '‘')
+    .replace(/&rdquo;/g, '”')
+    .replace(/&ldquo;/g, '“');
 }
 
 function formatDesc(s) {

@@ -11,6 +11,7 @@ const {
   clientId,
   clientSecret,
   debugEnabled,
+  greetingText,
   helpText,
   port,
   redirectUri,
@@ -67,7 +68,7 @@ controller.storage.teams.all((teams) => {
 
 controller.on('create_bot', (bot) => {
   if (activeBots[bot.config.token]) {
-    // Already active, do nothing
+    if (debugEnabled) { console.info(`Bot already active: ${bot.config.token}, skipping`); }
   } else {
     bot.startRTM((err) => {
       if (!err) {
@@ -80,10 +81,11 @@ controller.on('create_bot', (bot) => {
 controller.hears([''], 'direct_message,direct_mention,mention', (bot, message) => {
   const { text } = message;
 
-  // If no text was supplied, treat it as a help command
   if (text === '' || text === 'help') {
     bot.reply(message, helpText);
-  } else { // Otherwise give the people their news!
+  } else if (['hi', 'hello', 'hey', 'yo'].includes(text)) {
+    bot.reply(message, greetingText);
+  } else {
     getNewsAndSend(message, bot);
   }
 });

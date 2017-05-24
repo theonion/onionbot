@@ -26,6 +26,7 @@ module.exports = {
   },
   firebaseUri: process.env.FIREBASE_URI,
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
+  greetingText: 'Hi there! I exist solely to deliver news straight to you via Slack, just give me something to search for.',
   helpText: 'It\'s really not that hard. Just try `@onionbot biden` or something.',
   iconUrl: process.env.ICON_URL,
   port: process.env.PORT || 3333,

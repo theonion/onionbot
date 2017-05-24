@@ -47,7 +47,6 @@ function generatePayload(article = null) {
         ts: published,
       },
     ],
-    icon_url: iconUrl,
     username: 'The Onion Bot',
   };
 }

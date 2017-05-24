@@ -27,12 +27,10 @@ function getNewsAndSend(message, bot) {
   uniqueVisitor.event(analyticsParams).send();
 
   request(queryUrl, (err, response, result) => {
-    let emojiName = 'fire';
     let articles;
 
     if (response.statusCode !== 500) {
       articles = JSON.parse(result).results;
-      emojiName = 'wave';
     }
 
     const randomIndex = Math.floor(Math.random() * articles.length);
@@ -43,7 +41,7 @@ function getNewsAndSend(message, bot) {
     bot.api.reactions.add({
       timestamp: ts,
       channel,
-      name: emojiName,
+      name: 'newspaper',
     }, (botErr) => {
       if (botErr) {
         bot.botkit.log('Failed to add emoji reaction :(', botErr);

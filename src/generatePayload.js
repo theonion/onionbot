@@ -1,4 +1,4 @@
-const config = require('./config');
+  const config = require('./config');
 const querystring = require('querystring');
 
 function stripTags(s) {
@@ -10,7 +10,8 @@ function symbolize(s) {
     .replace(/&rsquo;/g, '’')
     .replace(/&lsquo;/g, '‘')
     .replace(/&rdquo;/g, '”')
-    .replace(/&ldquo;/g, '“');
+    .replace(/&ldquo;/g, '“')
+    .replace(/&quot;/g, '"');
 }
 
 function formatDesc(s) {
